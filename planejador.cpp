@@ -351,16 +351,44 @@ double Planejador::calculaCaminho(const IDPonto& id_origem,
         // Gera sucessores de "atual"
         do{
           auto itr = rotas.begin();
+
           while(itr != rotas.end()){
+
             itr = find(itr, rotas.end(), atual);
-            if(itr != rota.end()){
+
+            if(itr != rotas.end()){
+
+              Rota rota_suc;
+              rota_suc.id = itr->id;
               Noh suc;
-              if(*itr.extremidade[0] == atual.id_pt){
-                suc.id_pt = *itr.extremidade[1];
+
+              if(itr->extremidade[0] == atual.id_pt){
+                suc.id_pt = itr->extremidade[1];
               }else{
-                suc.id_pt = *itr.extremidade[0];
+                suc.id_pt = itr->extremidade[0];
               }
-              Ponto pt_suc =
+
+              Ponto pt_suc;
+              pt_suc.id = suc.id_pt;
+              suc.id_rt = rota_suc.id;
+              suc.custo_passado = atual.custo_passado + rota_suc.comprimento;
+              suc.custo_futuro = haversine(pt_suc,pt_dest);
+
+              bool eh_inedito = true;
+
+              auto old = find(fechado.begin(), fechado.end(), suc.id_pt);
+              if(old != fechado.end()){
+                eh_inedito = false;
+
+              }else{
+                auto old = find(aberto.begin(),aberto.end(), suc.id_pt);
+                if(old != aberto.end()){
+                  if(suc.custo_total < old->custo_total){
+
+                  }
+                }
+              }
+
               ++itr;
             }
           }

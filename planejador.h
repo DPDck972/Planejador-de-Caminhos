@@ -109,6 +109,30 @@ struct Ponto
 double haversine(const Ponto& P1, const Ponto& P2);
 
 /* *************************
+   * TIPO NÓ           *
+   ************************* */
+struct Noh{
+  IDPonto id_pt; //Identificador do ponto do nó
+  IDRota id_rt; //Identificador da rota que trouxe até o ponto
+  double custo_passado; //Custo em km de quanto de cumprimento foi gasto para chegar no nó
+  double custo_futuro; //calculo heuristico de distância até o objetivo
+  double custo_total = custo_futuro + custo_passado; //custo passado + custo futuro;
+
+  //Construtor default
+  Noh(): id_pt(), id_rt(), custo_passado(0.0), custo_futuro(0.0), custo_total(custo_futuro+custo_passado) {}
+
+  //Sobrecarga de operadores
+
+  //Operator==
+
+  //Operator== Para comparação de id
+  bool operator==(const IDPonto& Id) const{
+    return (this->id_pt == Id);
+  }
+
+};
+
+/* *************************
    * CLASSE ROTA           *
    ************************* */
 
@@ -129,37 +153,18 @@ struct Rota
   }
   // Sobrecarga de operadores
   // Utilizados pelos algoritmos STL
+  //Operator== Para comparação com IDRota
   bool operator==(const IDRota& Id) const{
     return (this->id == Id);
   }
   //Operator== Para comparação com Noh
-  bool operator==(const Noh& noh)  const{
-    return ((noh.id_pt == this->extremidade[0]) || (noh.id_pt == this->extremidade[1]));
+  bool operator==(const Noh& no)  const{
+    return ((no.id_pt == this->extremidade[0]) || (no.id_pt == this->extremidade[1]));
   }
-};
-
-/* *************************
-   * TIPO NÓ           *
-   ************************* */
-struct Noh{
-  IDPonto id_pt; //Identificador do ponto do nó
-  IDRota id_rt; //Identificador da rota que trouxe até o ponto
-  double custo_passado; //Custo em km de quanto de cumprimento foi gasto para chegar no nó
-  double custo_futuro; //calculo heuristico de distância até o objetivo
-  double custo_total; //custo passado + custo futuro;
-
-  //Construtor default
-  Noh(): id_pt(), id_rt(), custo_passado(0.0), custo_futuro(0.0), custo_total(0.0) {}
-
-  //Sobrecarga de operadores
-
-  //Operator==
-
-  //Operator== Para comparação de id
-  bool operator==(const IDPonto& Id) const{
-    return (this->id_pt == Id);
+  //Operator== Para comparação com Rota
+  bool operator==(const Rota& r) const{
+    return (this->id == r.id);
   }
-
 };
 
 /* *************************

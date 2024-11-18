@@ -109,36 +109,6 @@ struct Ponto
 double haversine(const Ponto& P1, const Ponto& P2);
 
 /* *************************
-   * CLASSE ROTA           *
-   ************************* */
-
-/// Uma rota no mapa
-struct Rota
-{
-  IDRota id;              // Identificador da rota
-  std::string nome;       // Denominacao usual da rota
-  IDPonto extremidade[2]; // Ids dos pontos extremos da rota
-  double comprimento;     // Comprimento da rota (em km)
-
-  // Construtor default
-  Rota(): id(), nome(""), extremidade(), comprimento(0.0) {}
-  // Teste de validade
-  bool valid() const
-  {
-    return id.valid();
-  }
-  // Sobrecarga de operadores
-  // Utilizados pelos algoritmos STL
-  bool operator==(const IDRota& Id) const{
-    return (this->id == Id);
-  }
-  //Operator== Para comparação com id_Rota
-  bool operator==(const Rota& rota)  const{
-    return ((this->id_pt == rota.extremidade[0]) || (this->id_pt == rota.extremidade[1]));
-  }
-};
-
-/* *************************
    * TIPO NÓ           *
    ************************* */
 struct Noh{
@@ -160,6 +130,41 @@ struct Noh{
     return (this->id_pt == Id);
   }
 
+};
+
+/* *************************
+   * CLASSE ROTA           *
+   ************************* */
+
+/// Uma rota no mapa
+struct Rota
+{
+  IDRota id;              // Identificador da rota
+  std::string nome;       // Denominacao usual da rota
+  IDPonto extremidade[2]; // Ids dos pontos extremos da rota
+  double comprimento;     // Comprimento da rota (em km)
+
+  // Construtor default
+  Rota(): id(), nome(""), extremidade(), comprimento(0.0) {}
+  // Teste de validade
+  bool valid() const
+  {
+    return id.valid();
+  }
+  // Sobrecarga de operadores
+  // Utilizados pelos algoritmos STL
+  //Operator== Para comparação com IDRot
+  bool operator==(const IDRota& Id) const{
+    return (this->id == Id);
+  }
+  //Operator== Para comparação com Noh
+  bool operator==(const Noh& no)  const{
+    return ((no.id_pt == this->extremidade[0]) || (no.id_pt == this->extremidade[1]));
+  }
+  //Operator== Para comparação com Rota
+  bool operator==(const Rota& r) const{
+    return (this->id == r.id);
+  }
 };
 
 /* *************************
