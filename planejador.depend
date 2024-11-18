@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1731163964 source:c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador-main.cpp
+	<iostream>
+	<chrono>
+	"planejador.h"
+
+1731889359 c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador.h
+	<string>
+	<list>
+
+1731257501 source:c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador.cpp
+	<iostream>
+	<fstream>
+	<algorithm>
+	<cmath>
+	"planejador.h"
+
