@@ -333,6 +333,7 @@ double Planejador::calculaCaminho(const IDPonto& id_origem,
         atual.id_rt = Rota().id;
         atual.custo_passado = 0.0;
         atual.custo_futuro = haversine(pt_orig,pt_dest);
+        atual.custo_total = atual.custo_futuro + atual.custo_passado;
 
         //Inicializando os conteiners aberto e fechado
         list<Noh> aberto;
@@ -386,6 +387,8 @@ double Planejador::calculaCaminho(const IDPonto& id_origem,
                         suc.custo_passado = atual.custo_passado + rota_suc->comprimento;
 
                         suc.custo_futuro = haversine(*pt_suc,pt_dest);
+
+                        suc.custo_total = suc.custo_futuro + suc.custo_passado;
 
                         // Inicialmente, assume que
                         // não existe Noh igual a

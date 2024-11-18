@@ -116,10 +116,10 @@ struct Noh{
   IDRota id_rt; //Identificador da rota que trouxe até o ponto
   double custo_passado; //Custo em km de quanto de cumprimento foi gasto para chegar no nó
   double custo_futuro; //calculo heuristico de distância até o objetivo
-  double custo_total = custo_futuro + custo_passado; //custo passado + custo futuro;
+  double custo_total; //custo passado + custo futuro;
 
   //Construtor default
-  Noh(): id_pt(), id_rt(), custo_passado(0.0), custo_futuro(0.0) {}
+  Noh(): id_pt(), id_rt(), custo_passado(0.0), custo_futuro(0.0), custo_total(custo_futuro + custo_passado) {}
 
   //Sobrecarga de operadores
 
