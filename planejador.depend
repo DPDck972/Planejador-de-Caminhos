@@ -4,14 +4,16 @@
 	<chrono>
 	"planejador.h"
 
-1731896553 c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador.h
+1731953239 c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador.h
 	<string>
 	<list>
 
-1731257501 source:c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador.cpp
+1731953238 source:c:\users\phantom duck\documents\ufrn\2024.2 - programacao avancada - turma 02\avaliação 02\planejador.cpp
 	<iostream>
 	<fstream>
 	<algorithm>
 	<cmath>
+	<vector>
+	<list>
 	"planejador.h"
 

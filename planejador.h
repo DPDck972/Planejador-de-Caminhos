@@ -119,7 +119,7 @@ struct Noh{
   double custo_total = custo_futuro + custo_passado; //custo passado + custo futuro;
 
   //Construtor default
-  Noh(): id_pt(), id_rt(), custo_passado(0.0), custo_futuro(0.0), custo_total(custo_futuro+custo_passado) {}
+  Noh(): id_pt(), id_rt(), custo_passado(0.0), custo_futuro(0.0) {}
 
   //Sobrecarga de operadores
 
@@ -128,6 +128,16 @@ struct Noh{
   //Operator== Para comparação de id
   bool operator==(const IDPonto& Id) const{
     return (this->id_pt == Id);
+  }
+  bool operator==(const Noh& no) const{
+    return (this->id_pt == no.id_pt);
+  }
+
+  //Operator<
+
+  //Operator< para comparação de custo total
+  bool operator<(const Noh& no) const{
+    return (this->custo_total < no.custo_total);
   }
 
 };
